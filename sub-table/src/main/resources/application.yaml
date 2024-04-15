@@ -1,0 +1,35 @@
+server:
+  port: 9088
+
+# 指定mybatis信息
+mybatis:
+  config-location: classpath:mybatis-config.xml
+
+spring:
+  shardingsphere:
+    datasource:
+      names: master
+
+    # 数据源 主库
+      master:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/master?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
+        username: root
+        password: root
+
+    # 数据分表规则
+    # 指定所需分的表
+    sharding:
+      tables:
+        tab_user:
+          actual-data-nodes: master.tab_user$->{0..2}
+          table-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: tab_user$->{id % 3}
+
+    # 打印sql
+    props:
+      sql:
+        show: true

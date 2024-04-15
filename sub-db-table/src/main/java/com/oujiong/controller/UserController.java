@@ -39,6 +39,7 @@ public class UserController {
         userList.add(new User(3L,"妈妈", "女", 28));
         userList.add(new User(4L,"爷爷", "男", 64));
         userList.add(new User(5L,"奶奶", "女", 62));
+        userList.add(new User(6L,"奶奶", "女", 7));
     }
     /**
      * @Description: 批量保存用户

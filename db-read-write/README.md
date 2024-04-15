@@ -118,18 +118,21 @@ Sharding-JDBC可以通过`Java`，`YAML`，`Spring命名空间`和`Spring Boot S
 #### 3、UserController
 
 ```java
+
 @RestController
 public class UserController {
 
     @Autowired
     private UserService userService;
+
     /**
      * @Description: 保存用户
      */
     @PostMapping("save-user")
     public Object saveUser() {
-        return userService.saveOne(new User("小小", "女", 3));
+        return userService.saveOne(new com.yp.entity.User("小小", "女", 3));
     }
+
     /**
      * @Description: 获取用户列表
      */

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.oujiong.mapper.UserMapper">
-  <resultMap id="BaseResultMap" type="com.oujiong.entity.User">
+<mapper namespace="com.oujiong.mapper.com.yp.user.UserMapper">
+  <resultMap id="BaseResultMap" type="com.oujiong.entity.com.yp.user.User">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="sex" jdbcType="VARCHAR" property="sex" />
@@ -19,7 +19,7 @@
     from tab_user order by id
   </select>
 
-  <insert id="insert" parameterType="com.oujiong.entity.User">
+  <insert id="insert" parameterType="com.oujiong.entity.com.yp.user.User">
     insert into tab_user (id, name, sex,
       age, create_time, update_time,
       status)

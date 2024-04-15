@@ -1,0 +1,70 @@
+server:
+  port: 9088
+
+# 指定mybatis信息
+mybatis:
+  config-location: classpath:mybatis-config.xml
+
+# 打印SQL
+spring:
+  shardingsphere:
+    props:
+      sql:
+        show: true
+
+# 数据源配置
+    datasource:
+      names: master0, slave0, master1, slave1
+
+      master0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/master0?characterEncoding=utf-8
+        username: root
+        password: root
+
+      slave0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/slave0?characterEncoding=utf-8
+        username: root
+        password: root
+
+      master1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/master1?characterEncoding=utf-8
+        username: root
+        password: root
+
+      slave1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/slave1?characterEncoding=utf-8
+        username: root
+        password: root
+
+# 分库分表策略配置
+    sharding:
+      default-database-strategy:
+        inline:
+          sharding-column: age
+          algorithm-expression: master$->{age % 2}
+
+      tables:
+        tab_user:
+          actual-data-nodes: master$->{0..1}.tab_user$->{0..1}
+          table-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: tab_user$->{id % 2}
+
+# 主从配置
+      master-slave-rules:
+        master0:
+          master-data-source-name: master0
+          slave-data-source-names: slave0
+
+        master1:
+          master-data-source-name: master1
+          slave-data-source-names: slave1

@@ -108,6 +108,7 @@ Sharding-JDBC可以通过`Java`，`YAML`，`Spring命名空间`和`Spring Boot S
 #### 2、UserController
 
 ```java
+
 @RestController
 public class UserController {
 
@@ -117,18 +118,20 @@ public class UserController {
     /**
      * 模拟插入数据
      */
-    List<User> userList = Lists.newArrayList();
+    List<com.yp.entity.User> userList = Lists.newArrayList();
+
     /**
      * 初始化插入数据
      */
     @PostConstruct
     private void getData() {
-        userList.add(new User(1L,"小小", "女", 3));
-        userList.add(new User(2L,"爸爸", "男", 30));
-        userList.add(new User(3L,"妈妈", "女", 28));
-        userList.add(new User(4L,"爷爷", "男", 64));
-        userList.add(new User(5L,"奶奶", "女", 62));
+        userList.add(new com.yp.entity.User(1L, "小小", "女", 3));
+        userList.add(new com.yp.entity.User(2L, "爸爸", "男", 30));
+        userList.add(new com.yp.entity.User(3L, "妈妈", "女", 28));
+        userList.add(new com.yp.entity.User(4L, "爷爷", "男", 64));
+        userList.add(new com.yp.entity.User(5L, "奶奶", "女", 62));
     }
+
     /**
      * @Description: 批量保存用户
      */
@@ -136,6 +139,7 @@ public class UserController {
     public Object saveUser() {
         return userService.insertForeach(userList);
     }
+
     /**
      * @Description: 获取用户列表
      */

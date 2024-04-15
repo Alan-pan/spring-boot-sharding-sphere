@@ -9,6 +9,7 @@
         <module>sub-table-read-write</module>
         <module>sub-db-table</module>
         <module>sub-db-table-read-write</module>
+        <module>encrypt-table</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -55,18 +56,21 @@
             <groupId>org.apache.shardingsphere</groupId>
             <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
             <version>4.0.0-RC1</version>
+<!--            <version>4.1.1</version>-->
         </dependency>
 
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
             <artifactId>sharding-jdbc-spring-namespace</artifactId>
             <version>4.0.0-RC1</version>
+<!--            <version>4.1.1</version>-->
         </dependency>
         <!--lombok实体工具-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
     </dependencies>
 
     <build>
