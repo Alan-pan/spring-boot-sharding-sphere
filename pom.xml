@@ -14,7 +14,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.6.RELEASE</version>
+        <version>2.6.7</version>
         <relativePath/>
     </parent>
     <groupId>com.jincou.sharding.sphere</groupId>
@@ -35,36 +35,41 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
         <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis-spring-boot}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-        <!--mybatis驱动-->
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.13</version>
         </dependency>
-        <!--druid数据源-->
+
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>${druid}</version>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.5.1</version>
         </dependency>
-        <!--shardingsphere最新版本-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.5.1</version>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
             <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
-            <version>4.0.0-RC1</version>
-<!--            <version>4.1.1</version>-->
+            <version>4.1.1</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
             <artifactId>sharding-jdbc-spring-namespace</artifactId>
-            <version>4.0.0-RC1</version>
-<!--            <version>4.1.1</version>-->
+            <version>4.1.1</version>
         </dependency>
+
         <!--lombok实体工具-->
         <dependency>
             <groupId>org.projectlombok</groupId>

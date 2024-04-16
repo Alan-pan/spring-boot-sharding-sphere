@@ -1,9 +1,8 @@
 server:
   port: 9088
 
-# 指定mybatis信息
-mybatis:
-  config-location: classpath:mybatis-config.xml
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml #mapper.xml文件的地址
 
 # 打印SQL
 spring:
@@ -17,30 +16,37 @@ spring:
       names: master0, slave0, master1, slave1
 
       master0:
-        type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/master0?characterEncoding=utf-8
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/master0?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
         username: root
         password: root
+      hikari:
+        min-idle: 5 #最小空闲连接数量
+        max-pool-size: 50 #连接池最大连接数，默认是10
+        idle-timeout: 180000 #空闲连接存活最大时间，默认600000（10分钟）
+        is_auto-commit: true #此属性控制从池返回的连接的默认自动提交行为,默认值：true
+        max-lifetime: 1800000 #此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+        connection-timeout: 30000 #数据库连接超时时间,默认30秒，即30000
 
       slave0:
-        type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/slave0?characterEncoding=utf-8
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/slave0?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
         username: root
         password: root
 
       master1:
-        type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/master1?characterEncoding=utf-8
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/master1?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
         username: root
         password: root
 
       slave1:
-        type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/slave1?characterEncoding=utf-8
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/slave1?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
         username: root
         password: root
 
@@ -68,3 +74,4 @@ spring:
         master1:
           master-data-source-name: master1
           slave-data-source-names: slave1
+

@@ -1,5 +1,6 @@
 package com.oujiong.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.Date;
  * user表
  */
 @Data
+@TableName("t_user")
 public class User {
     /**
      * 主键

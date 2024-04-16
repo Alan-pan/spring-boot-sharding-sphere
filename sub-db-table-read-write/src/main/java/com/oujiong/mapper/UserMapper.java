@@ -1,6 +1,7 @@
 package com.oujiong.mapper;
 
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.oujiong.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * @date 2019/10/8 下午9:23
  */
 @Mapper
-public interface UserMapper {
+public interface UserMapper extends BaseMapper<User> {
 
     /**
      * 批量插入
